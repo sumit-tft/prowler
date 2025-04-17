@@ -756,3 +756,39 @@ export interface UserProps {
   dateAdded: string;
   status: "active" | "inactive";
 }
+
+interface IntegrationAttributes {
+  inserted_at: string;
+  updated_at: string;
+  enabled: boolean;
+  connected: boolean;
+  connection_last_checked_at: string;
+  integration_type: string;
+  configuration: {
+    email_domain: string;
+    saml_metadata: string;
+  };
+}
+
+interface RelationshipData {
+  id: string;
+  type: string;
+}
+
+interface IntegrationRelationships {
+  providers: {
+    data: RelationshipData[];
+  };
+}
+
+export interface Integration {
+  type: string;
+  id: string;
+  attributes: IntegrationAttributes;
+  relationships: IntegrationRelationships;
+}
+
+export interface IntegrationsState {
+  data: Integration[];
+  error?: string;
+}

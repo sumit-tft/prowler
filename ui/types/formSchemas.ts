@@ -6,7 +6,7 @@ export const addRoleFormSchema = z.object({
   manage_account: z.boolean().default(false),
   manage_billing: z.boolean().default(false),
   manage_providers: z.boolean().default(false),
-  // manage_integrations: z.boolean().default(false),
+  manage_integrations: z.boolean().default(false),
   manage_scans: z.boolean().default(false),
   unlimited_visibility: z.boolean().default(false),
   groups: z.array(z.string()).optional(),
@@ -18,7 +18,7 @@ export const editRoleFormSchema = z.object({
   manage_account: z.boolean().default(false),
   manage_billing: z.boolean().default(false),
   manage_providers: z.boolean().default(false),
-  // manage_integrations: z.boolean().default(false),
+  manage_integrations: z.boolean().default(false),
   manage_scans: z.boolean().default(false),
   unlimited_visibility: z.boolean().default(false),
   groups: z.array(z.string()).optional(),
@@ -216,3 +216,24 @@ export const editUserFormSchema = () =>
     userId: z.string(),
     role: z.string().optional(),
   });
+
+export const samlSSOIntegrationFormSchema = z.object({
+  emailDomain: z.string().regex(/^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, {
+    message: "Invalid domain format",
+  }),
+  file: z
+    .custom<FileList>((val) => val instanceof FileList, {
+      message: "Invalid file input",
+    })
+    .refine((files) => files?.length > 0, { message: "File is required" })
+    .refine((files) => files[0]?.size <= 2 * 1024 * 1024, {
+      message: "File size must be under 2MB",
+    })
+    .refine(
+      (files) =>
+        files[0]?.type === "text/xml" || files[0]?.name.endsWith(".xml"),
+      {
+        message: "Only XML files are allowed",
+      },
+    ),
+});

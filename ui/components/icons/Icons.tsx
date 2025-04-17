@@ -1053,3 +1053,95 @@ export const MutedIcon: React.FC<IconSvgProps> = ({
     </svg>
   );
 };
+
+export const TablerPuzzleIcon: React.FC<IconSvgProps> = ({
+  size,
+  height,
+  width,
+  ...props
+}) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height={size || height || 24}
+      width={size || width || 24}
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="M4 7h3a1 1 0 0 0 1-1V5a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1h-3a1 1 0 0 1-1-1v-1a2 2 0 0 0-4 0v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a2 2 0 0 0 0-4H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1"
+      />
+    </svg>
+  );
+};
+
+export const ClipboardCopyIcon = () => {
+  return (
+    <svg
+      className="h-9 w-9 text-blue-600"
+      width="25"
+      height="33"
+      viewBox="0 0 25 33"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="#FFF"
+        stroke="#06C"
+        strokeWidth="1.5"
+        fillRule="evenodd"
+        strokeLinejoin="round"
+      >
+        <path d="M16 3h2a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h2"></path>
+        <rect x="6" y="1" width="10" height="4" rx="2"></rect>
+      </g>
+    </svg>
+  );
+};
+
+export const ClipboardCopiedIcon = () => {
+  return (
+    <svg
+      className="h-9 w-9 text-blue-600"
+      width="25"
+      height="33"
+      viewBox="0 0 25 33"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g fill="none" fillRule="evenodd">
+        <path
+          d="M16 3h2a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H4a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h2"
+          stroke="#06C"
+          strokeWidth="1.5"
+          fill="#FFF"
+          strokeLinejoin="round"
+        />
+        <rect
+          stroke="#06C"
+          strokeWidth="1.5"
+          fill="#FFF"
+          strokeLinejoin="round"
+          x="6"
+          y="1"
+          width="10"
+          height="4"
+          rx="2"
+        />
+        <path
+          d="M16 16c-4.411 0-8 3.589-8 8s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8z"
+          fill="#71BE44"
+          fillRule="nonzero"
+        />
+        <path
+          d="m20.163 21.319-5.169 6.154a.615.615 0 0 1-.461.22h-.01a.615.615 0 0 1-.458-.205l-2.215-2.461a.615.615 0 1 1 .914-.823l1.742 1.935 4.715-5.612a.615.615 0 0 1 .942.792z"
+          fill="#FFF"
+          fillRule="nonzero"
+        />
+      </g>
+    </svg>
+  );
+};

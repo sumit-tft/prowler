@@ -27,6 +27,7 @@ import {
   DocIcon,
   GCPIcon,
   SupportIcon,
+  TablerPuzzleIcon,
 } from "@/components/icons/Icons";
 import { GroupProps } from "@/types";
 
@@ -127,6 +128,11 @@ export const getMenuList = (pathname: string): GroupProps[] => {
             { href: "/manage-groups", label: "Provider Groups", icon: Group },
             { href: "/scans", label: "Scan Jobs", icon: Timer },
             { href: "/roles", label: "Roles", icon: UserCog },
+            {
+              href: "/integrations",
+              label: "Integrations",
+              icon: TablerPuzzleIcon,
+            },
           ],
           defaultOpen: true,
         },
