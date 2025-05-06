@@ -16,6 +16,7 @@ export const getProviders = async ({
   query = "",
   sort = "",
   filters = {},
+  pageSize = 10,
 }) => {
   const headers = await getAuthHeaders({ contentType: false });
 
@@ -24,6 +25,7 @@ export const getProviders = async ({
   const url = new URL(`${apiBaseUrl}/providers?include=provider_groups`);
 
   if (page) url.searchParams.append("page[number]", page.toString());
+  if (pageSize) url.searchParams.append("page[size]", pageSize.toString());
   if (query) url.searchParams.append("filter[search]", query);
   if (sort) url.searchParams.append("sort", sort);
 
@@ -186,6 +188,15 @@ export const addCredentialsProvider = async (formData: FormData) => {
       client_secret: formData.get("client_secret"),
       tenant_id: formData.get("tenant_id"),
     };
+  } else if (providerType === "m365") {
+    // Static credentials configuration for M365
+    secret = {
+      client_id: formData.get("client_id"),
+      client_secret: formData.get("client_secret"),
+      tenant_id: formData.get("tenant_id"),
+      user: formData.get("user"),
+      encrypted_password: formData.get("encrypted_password"),
+    };
   } else if (providerType === "gcp") {
     // Static credentials configuration for GCP
     secret = {
@@ -279,6 +290,15 @@ export const updateCredentialsProvider = async (
       client_id: formData.get("client_id"),
       client_secret: formData.get("client_secret"),
       tenant_id: formData.get("tenant_id"),
+    };
+  } else if (providerType === "m365") {
+    // Static credentials configuration for M365
+    secret = {
+      client_id: formData.get("client_id"),
+      client_secret: formData.get("client_secret"),
+      tenant_id: formData.get("tenant_id"),
+      user: formData.get("user"),
+      encrypted_password: formData.get("encrypted_password"),
     };
   } else if (providerType === "gcp") {
     // Static credentials configuration for GCP
